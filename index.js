@@ -36,3 +36,13 @@ function changeSize(input) {
   }
 }
 
+function changeColorBlue() {
+  color = "blue";
+}
+function changeColorOrange() {
+  color = "orange";
+}
+function changeColorWhite() {
+  color = "white";
+}
+

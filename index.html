@@ -13,11 +13,19 @@
 
     </div>
     <br>
-    <label for="size">Size: <input type="text" id="size" name="size" placeholder="Size of Board" value="16" onchange=changeSize(this.value)></label>
-    <br>
     <div class=".buttons">
+    <button type="button" onclick=changeColorOrange()>Orange</button>
+    <button type="button" onclick=changeColorBlue()>Blue</button>
+    <button type="button" onclick=changeColorWhite()>Eraser</button>
     <button type="button">Change size</button>
     <button type="button" onclick=resetBoard()>Reset</button>
+    </div>
+    <br>
+    <div>
+        <label for="size">Size: 
+            <input type="text" id="size" name="size" placeholder="Size of Board" value="16" onchange=changeSize(this.value)>
+        </label>
+        <button type="button">Change size</button>
     </div>
     <script src="index.js">
         
