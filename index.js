@@ -1,4 +1,3 @@
-
 createBoard(16);
 let color = "black";
 
@@ -11,11 +10,14 @@ function createBoard(size) {
     board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
     square.addEventListener("mouseover", (event) => {
-      event.target.style.backgroundColor = color;
+      if (event.target.style.backgroundColor == color){
+        event.target.style.filter= color;
+      } else {
+        event.target.style.backgroundColor = color;
+      }
     });
     board.appendChild(square);
   }
-  
 }
 
 function resetBoard() {
@@ -23,7 +25,8 @@ function resetBoard() {
   let squares = board.querySelectorAll("div");
   squares.forEach((square) => {
     square.style.backgroundColor = "white";
-  })
+    square.style.filter="brightness(100%)";
+  });
 }
 
 function changeSize(input) {
@@ -31,7 +34,6 @@ function changeSize(input) {
   if (input < 2 || input > 100) {
     alert("The input must be within 2 and 100");
   } else {
-    
     createBoard(input);
   }
 }
@@ -45,4 +47,6 @@ function changeColorOrange() {
 function changeColorWhite() {
   color = "white";
 }
-
+function changeColorBlack() {
+  color = "black";
+}
