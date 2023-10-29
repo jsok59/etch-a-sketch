@@ -5,16 +5,12 @@ function createBoard(size) {
   let board = document.querySelector(".board");
   let squares = document.querySelectorAll(".board >div");
   squares.forEach((div) => div.remove());
+  board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
   for (let i = 0; i < size * size; i++) {
     let square = document.createElement("div");
-    board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-    board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
     square.addEventListener("mouseover", (event) => {
-      if (event.target.style.backgroundColor == color){
-        event.target.style.filter= color;
-      } else {
-        event.target.style.backgroundColor = color;
-      }
+      event.target.style.backgroundColor = color;
     });
     board.appendChild(square);
   }
@@ -38,15 +34,19 @@ function changeSize(input) {
   }
 }
 
-function changeColorBlue() {
-  color = "blue";
+function changeColor(input) {
+  color = input;
 }
-function changeColorOrange() {
-  color = "orange";
+
+function changeColorRandom() {
+  
+  color = getRandomColor();
 }
-function changeColorWhite() {
-  color = "white";
-}
-function changeColorBlack() {
-  color = "black";
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
