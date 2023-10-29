@@ -10,7 +10,11 @@ function createBoard(size) {
   for (let i = 0; i < size * size; i++) {
     let square = document.createElement("div");
     square.addEventListener("mouseover", (event) => {
-      event.target.style.backgroundColor = color;
+      if (color === "random") {
+        event.target.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+      } else {
+        event.target.style.backgroundColor = color;
+      }
     });
     board.appendChild(square);
   }
@@ -38,15 +42,4 @@ function changeColor(input) {
   color = input;
 }
 
-function changeColorRandom() {
-  
-  color = getRandomColor();
-}
-function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
+
